@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Kemono Tweaks & Player
 // @namespace    http://tampermonkey.net/
-// @version      3.4
+// @version      3.5
 // @description  Fetches post title for accuracy, features an expandable title header for long names, and plays .wav/.mp3 files in a feature-rich audio player modal with glassmorphism UI and album art.
 // @match        https://kemono.cr/*
 // @author       medy17
@@ -362,9 +362,14 @@
             e.stopPropagation();
             modalOverlay.classList.toggle('minimized');
             const svg = minimizeBtn.querySelector("svg");
-            if (modalOverlay.classList.contains("minimized")) {
+            const isMinimized = modalOverlay.classList.contains("minimized");
+
+            // FIX: Toggle scroll based on minimized state
+            if (isMinimized) {
+                document.body.style.overflow = ""; // Restore scrolling
                 svg.innerHTML = '<path d="M19,3H5C3.89,3 3,3.89 3,5V19A2,2 0 0,0 5,21H19A2,2 0 0,0 21,19V5C21,3.89 20.1,3 19,3M19,19H5V5H19V19Z" />';
             } else {
+                document.body.style.overflow = "hidden"; // Lock scrolling again
                 svg.innerHTML = '<path d="M19,13H5V11H19V13Z" />';
             }
         }
