@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Kemono Tweaks & Player
 // @namespace    http://tampermonkey.net/
-// @version      3.5
+// @version      3.6
 // @description  Fetches post title for accuracy, features an expandable title header for long names, and plays .wav/.mp3 files in a feature-rich audio player modal with glassmorphism UI and album art.
 // @match        https://kemono.cr/*
 // @author       medy17
@@ -216,6 +216,7 @@
 
         let currentAudioUrl = null;
         let currentFileName = "";
+        let currentFileExt = "";
         let activeRequest = null;
         let lastVolume = 1;
 
@@ -434,7 +435,12 @@
             if (!audio.src) return;
             const link = document.createElement("a");
             link.href = audio.src;
-            link.download = currentFileName || "kemono-audio";
+            let downloadName = currentFileName || "kemono-audio";
+            if (currentFileExt && !downloadName.toLowerCase().endsWith(currentFileExt.toLowerCase())) {
+                downloadName += currentFileExt;
+            }
+
+            link.download = downloadName;
             document.body.appendChild(link);
             link.click();
             document.body.removeChild(link);
@@ -469,6 +475,17 @@
         function open(url, fileName) {
             if (currentAudioUrl) URL.revokeObjectURL(currentAudioUrl);
             currentFileName = fileName;
+            currentFileExt = "";
+            try {
+                const urlPath = url.split('?')[0];
+                const extMatch = urlPath.match(/\.([0-9a-z]+)$/i);
+                if (extMatch) {
+                    currentFileExt = extMatch[0];
+                }
+            } catch (e) {
+                console.error("Could not parse extension", e);
+            }
+
             titleContainer.classList.remove("expanded");
 
             modalOverlay.classList.remove("minimized");
