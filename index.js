@@ -477,7 +477,7 @@
             currentFileName = fileName;
             currentFileExt = "";
             try {
-                const urlPath = url.split('?')[0];
+                const urlPath = url.split('?')[0].split('#')[0];
                 const extMatch = urlPath.match(/\.([0-9a-z]+)$/i);
                 if (extMatch) {
                     currentFileExt = extMatch[0];
