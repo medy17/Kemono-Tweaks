@@ -4,12 +4,12 @@ A userscript that enhances [Kemono](https://kemono.su) and [Coomer](https://coom
 
 ## Features
 
-- 🎵 **Audio Player** - Plays audio files in a sleek modal with download progress
-- 🎬 **Video Player** - Optional video playback (toggle via Tampermonkey menu)
-- 📝 **Full Titles** - Preserves full post titles without truncation
-- 🎨 **Glassmorphism UI** - Modern, blurred glass aesthetic
-- ⌨️ **Keyboard Shortcuts** - Space (play/pause), M (mute), F (fullscreen), Arrow keys (seek)
-- 📥 **Download** - Direct download button for media files
+- **Audio Player** - Plays audio files in a sleek modal with download progress
+- **Video Player** - Optional video playback (toggle via Tampermonkey menu)
+- **Full Titles** - Preserves full post titles without truncation
+- **Glassmorphism UI** - Modern, blurred glass aesthetic
+- **Keyboard Shortcuts** - Space (play/pause), M (mute), F (fullscreen), Arrow keys (seek)
+- **Download** - Direct download button for media files
 
 ## Installation
 
@@ -55,16 +55,3 @@ src/
     └── shim.ts           # Title preservation shim
 ```
 
-## Development
-
-The project uses:
-- **Vite** + **vite-plugin-monkey** for userscript bundling
-- **TypeScript** for type safety
-- **Tailwind CSS** with `kt-` prefix to avoid conflicts with host pages
-- **ESLint** + **Prettier** for code quality
-
-Build output is in `dist/kemono-tweaks.user.js` — install this file in Tampermonkey during development.
-
-## License
-
-MIT
