@@ -1,0 +1,39 @@
+/* 
+ * No Tailwind preflight/base - we don't want to reset the host page styles!
+ * Only include utilities for our player component
+ */
+@tailwind utilities;
+
+/* 
+ * Base styles that apply to the host page elements
+ * These use regular CSS (not Tailwind) to target Kemono's existing classes
+ */
+
+.post-card {
+  position: relative !important;
+}
+
+.post-card__header {
+  padding: 5px !important;
+  z-index: 1 !important;
+  color: #fff !important;
+  white-space: nowrap !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+  max-width: 100% !important;
+  display: block !important;
+  position: relative !important;
+}
+
+.post-card:hover .post-card__header {
+  white-space: normal !important;
+  overflow: visible !important;
+  background: #2e1905 !important;
+  color: #fff !important;
+  padding: 4px 6px !important;
+  z-index: 9999 !important;
+  position: absolute !important;
+  width: auto !important;
+  max-width: 300px !important;
+  border-radius: 6px !important;
+}
