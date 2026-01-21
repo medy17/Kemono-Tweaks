@@ -15,7 +15,7 @@ A userscript that enhances [Kemono](https://kemono.su) and [Coomer](https://coom
 
 ### For Users
 1. Install [Tampermonkey](https://www.tampermonkey.net/) or [Violentmonkey](https://violentmonkey.github.io/)
-2. Install the userscript from [Greasyfork](https://greasyfork.org/) (link TBD)
+2. Install the userscript from [Greasyfork](https://greasyfork.org/) ([link TBD](https://greasyfork.org/en/scripts/551036-kemono-tweaks-player))
 
 ### For Development
 ```bash
